@@ -2,6 +2,7 @@
 c++ modern xor encryption library
 
 its kinda shitcoded and very unorganized so sorry...
+at least its easy to use??
 
 ## string example
 ### example code:
@@ -9,9 +10,9 @@ its kinda shitcoded and very unorganized so sorry...
 #include "cryptra.hxx"
 
 int main() {
-	auto str1 = _cryptra("testing!!");
-	printf("%s\n", str1.decrypt());
-	str1.clear();
+	auto str1 = _("testing!!"); // encrypted string (with `_` macro)
+	printf("%s\n", str1);
+	str1.clear(); // clears str from runtime memory
 }
 ```
 ### example ida output:
@@ -122,7 +123,7 @@ LABEL_24:
 #include "cryptra.hxx"
 
 int main() {
-	printf("%d\n", _int(0x5));
+	printf("%d\n", _int(0x5)); // `_int` encrypts the value `0x5`
 }
 ```
 ### example ida output:
