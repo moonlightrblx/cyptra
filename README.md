@@ -1,8 +1,25 @@
 # cyptra
-c++ modern xor encryption library
+C++ encryption library made in an hour.
 
-its kinda shitcoded and very unorganized so sorry...
-at least its easy to use??
+It’s pretty shitcoded and the internals are kind of a mess, so don’t expect architecture or a perfectly organized file. The focus was mainly on keeping the library lightweight and extremely easy to use.
+
+Despite the questionable structure, it’s fast to integrate, simple to understand, and does the job without forcing a bunch of boilerplate onto the user. Just drop it in and use it. (just like the original)
+
+The main focus on this library was the encryption keys. The original encryption keys were 2 characters and obviously that wasn't very secure so I added a lot more randomness per build).
+The other biggest change is the actual decryption/encryption.
+The original
+`_storage[i] = data[i] ^ (_key1 + i % (1 + _key2));`
+
+Is VERY insecure and there are lots of public projects showing how to decrypt it.
+The new one:
+`Key1 + ((i * Key2) & 0xFF)`
+
+This creates non-repeating linear progression, larger effective keyspace, and better diffusion. Its
+still technically xor based but it but its less pattern, repetition, and better against most string scanners. There is still lots more changes but I don't want to rant about every new line.
+
+Hope you guys can find some flaws and fix them or just integrate for your projects protection
+
+UC link: https://www.unknowncheats.me/forum/c-and-c-/753972-cryptra.html#post4686627
 
 ## string example
 ### example code:
